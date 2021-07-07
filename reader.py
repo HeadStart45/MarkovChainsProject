@@ -24,6 +24,9 @@ class Word ():
             list[word] = wordObj
             self.fwords[list[word]] = 1
 
+    def get_word(self):
+        return self.word
+
 #methods
 
 def readInLines(txtFile):
@@ -81,9 +84,9 @@ def makeChains(txtFile):
 
 
 if __name__ == "__main__":
-    worddict = makeChains("hp1.txt")
-    for key in worddict.keys():
-        print(key)
+    worddict = makeChains("tester.txt")
+    for word in worddict.keys():
+        print(worddict[word].word + ": " + str(worddict[word].occurs))
     
     
 
