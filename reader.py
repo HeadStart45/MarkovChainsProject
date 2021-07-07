@@ -10,8 +10,7 @@ class Word ():
         self.word = word
         self.fwords = {}
         self.occurs = 1
-    def __str__(self) -> str:
-        return self.word
+    
 
     def addVertex(self, word, list):
         if word in list.keys():
@@ -43,21 +42,27 @@ def readInLines(txtFile):
 
 
 def makeChains(txtFile):
+    puncList = ["/", "\'", '\"', ")", "("]
     words = {}
     wordGroup = readInLines(txtFile)
     for wordIndex in range(len(wordGroup)):
-        puncList = [".", ",", "/", "'", '"', ":", ")"]
+       
         currentWord = wordGroup[wordIndex]
         #print("Current word is: " + currentWord)
-        
-        if currentWord[-1:] in puncList:
-            #if last character is punctuation, add vertex and remove punctuation
-            nextWord = currentWord[-1:]
-            currentWord = currentWord[:-1]
-        elif wordIndex == len(wordGroup) - 1:
-            nextWord = "."
+        if wordIndex == len(wordGroup) - 1: #if at end of list
+            nextWord = ""
         else:
             nextWord = wordGroup[wordIndex + 1]
+        
+            if currentWord[-1:] in puncList: #if last character is punctuation remove punctuation
+                currentWord = currentWord[:-1]
+            if nextWord[-1:] in puncList: #if last character is punctuation remove punctuation
+                nextWord = nextWord[:-1]
+            if currentWord[0] in puncList: #if first character is punctuation remove punctuation
+                currentWord = currentWord[1:]
+            if nextWord[0] in puncList: #if first character is punctuation remove punctuation
+                nextWord[1:]
+        
             if nextWord[-1:] in puncList:
                 nextWord = nextWord[:-1]
 
