@@ -1,0 +1,5 @@
+1. "Read" in the .txt file, line by line
+2. Convert lines to words, add to list of raw words (list: rawWords)
+3. Convert words to Word object (class Word) add to list of word objects (list: wordObjs)
+4. Read in each word object (var currentWord) in order and the word object next in the list (var nextWord) and update the vertexs dictionary on the Word class with +1 each time that vertex appears
+
