@@ -53,18 +53,24 @@ def makeChains(txtFile):
             nextWord = ""
         else:
             nextWord = wordGroup[wordIndex + 1]
-        
-            if currentWord[-1:] in puncList: #if last character is punctuation remove punctuation
-                currentWord = currentWord[:-1]
-            if nextWord[-1:] in puncList: #if last character is punctuation remove punctuation
-                nextWord = nextWord[:-1]
-            if currentWord[0] in puncList: #if first character is punctuation remove punctuation
-                currentWord = currentWord[1:]
-            if nextWord[0] in puncList: #if first character is punctuation remove punctuation
-                nextWord[1:]
-        
-            if nextWord[-1:] in puncList:
-                nextWord = nextWord[:-1]
+            #print(nextWord[0])
+            if nextWord in puncList:
+                nextWord = nextWord
+            elif currentWord in puncList:
+                currentWord = currentWord
+
+            else:
+                if currentWord[-1:] in puncList: #if last character is punctuation remove punctuation
+                    currentWord = currentWord[:-1]
+                if nextWord[-1:] in puncList: #if last character is punctuation remove punctuation
+                    nextWord = nextWord[:-1]
+                if currentWord[0] in puncList: #if first character is punctuation remove punctuation
+                    currentWord = currentWord[1:]
+                if nextWord[0] in puncList: #if first character is punctuation remove punctuation
+                    nextWord = nextWord[1:]
+            
+                if nextWord[-1:] in puncList:
+                    nextWord = nextWord[:-1]
 
           
         #print("Next word is: " + nextWord)

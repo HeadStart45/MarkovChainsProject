@@ -40,7 +40,11 @@ def writePoem(txtFile):
         line = word.capitalize() + " "
         for x in range(5, 11):
             word = chooseNextWord(word, wordDict)
-            line += word + " "
+            
+            if word in ("\"", "\'", "--", " --"):
+                line += " "
+            else:
+                line += word + " "
             if word[-1:] == ".":
                 break
         if line[-2:][0] != ".":
@@ -50,7 +54,7 @@ def writePoem(txtFile):
         lines += line
     return lines
 
-print(writePoem("tester.txt"))
+print(writePoem("hp1.txt"))
     
 
 

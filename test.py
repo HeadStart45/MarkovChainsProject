@@ -1,2 +1,2 @@
 test = "Liamstring"
-print(test[:-2])
+print(test[0])
